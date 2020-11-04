@@ -1018,7 +1018,7 @@ fleet.connections.allowToDefaultPort(rdsDatabase, 'Fleet can access database');
 ```
 listener.connections.allow_default_port_from_any_ipv4("Allow public access")
 
-fleet.connections.allow_to_default_port(rds_database, "Fleet can acceess database")
+fleet.connections.allow_to_default_port(rds_database, "Fleet can access database")
 ```
 
 ------
@@ -1110,7 +1110,7 @@ bucket.AddObjectCreatedNotification(new s3Nots.LambdaDestination(handler));
 
 ## Removal policies<a name="resources_removal"></a>
 
-Resources that maintain persistent data, such as databases and Amazon S3 buckets, have a *removal policy* that indicates whether to delete persistent objects when the AWS CDK stack that contains them is destroyed\. The values specifying the removal policy are available through the `RemovalPolicy` enumeration in the AWS CDK `core` module\.
+Resources that maintain persistent data, such as databases and Amazon S3 buckets and even Amazon ECR registries, have a *removal policy* that indicates whether to delete persistent objects when the AWS CDK stack that contains them is destroyed\. The values specifying the removal policy are available through the `RemovalPolicy` enumeration in the AWS CDK `core` module\.
 
 **Note**  
 Resources besides those that store data persistently may also have a `removalPolicy` that is used for a different purpose\. For example, a Lambda function version uses a `removalPolicy` attribute to determine whether a given version is retained when a new version is deployed\. These have different meanings and defaults compared to the removal policy on an Amazon S3 bucket or DynamoDB table\.

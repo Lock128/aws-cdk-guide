@@ -16,7 +16,7 @@ Before you can use CDK Pipelines, you must bootstrap the AWS environment\(s\) to
 **Note**  
 See [Bootstrapping](bootstrapping.md) for more information on the kinds of resources created by bootstrapping and how to customize the bootstrap stack\.
 
-You may have already bootstrapped one or more environments so you can deploy assets and Lambda functions using the AWS CDK\. Continuous deployment with CDK Pipelines requires that the CDK Toolkit stack include additional resources, so the boostrap stack has been extended to include an additional Amazon S3 bucket, an Amazon ECR repository, and IAM roles to give the various parts of a pipeline the permissions they need\. This new style of CDK Toolkit stack will eventually become the default, but at this writing, you must opt in\. The AWS CDK Toolkit will upgrade your existing bootstrap stack or create a new one, as necessary\.
+You may have already bootstrapped one or more environments so you can deploy assets and Lambda functions using the AWS CDK\. Continuous deployment with CDK Pipelines requires that the CDK Toolkit stack include additional resources, so the bootstrap stack has been extended to include an additional Amazon S3 bucket, an Amazon ECR repository, and IAM roles to give the various parts of a pipeline the permissions they need\. This new style of CDK Toolkit stack will eventually become the default, but at this writing, you must opt in\. The AWS CDK Toolkit will upgrade your existing bootstrap stack or create a new one, as necessary\.
 
 To bootstrap an environment that can provision an AWS CDK pipeline, set the environment variable `CDK_NEW_BOOTSTRAP` before invoking `cdk bootstrap`, as shown below\. Invoking the AWS CDK Toolkit via the `npx` command installs it if necessary, and will use the version of the Toolkit installed in the current project if one exists\. 
 
@@ -207,9 +207,6 @@ Edit your project's `pom.xml` and add a `<dependency>` element for the `pipeline
     <artifactId>codepipeline-actions</artifactId>
     <version>${cdk.version}</version>
 </dependency>
-```
-
-```
 ```
 
 ------
@@ -1654,7 +1651,7 @@ pipeline = CdkPipeline(self, "Pipeline",
 validation_action = ShellScriptAction(
     action_name="TestUsingBuildArtifact",
     additional_artifacts=[integ_tests_artifact],
-    # 'test.js' was produced from "test/test.ts" durinng the synth step
+    # 'test.js' was produced from "test/test.ts" during the synth step
     commands=["node ./test.js"]
 )
 ```
